@@ -1,0 +1,39 @@
+{
+  "name": "wsm",
+  "version": "1.0.0",
+  "description": "A better way to handle WebSocket connection for both Client-side and Server-side.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jefftham/wsm.git"
+  },
+  "keywords": [
+    "ws",
+    "websocket",
+    "manager",
+    "server-side",
+    "client-sede",
+    "websocket",
+    "manager",
+    "websocket",
+    "handler",
+    "HyBi",
+    "Push",
+    "RFC-6455",
+    "WebSocket",
+    "WebSockets",
+    "real-time"
+  ],
+  "author": "Jeff Tham <Jeff.Tham@email.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jefftham/wsm/issues"
+  },
+  "homepage": "https://github.com/jefftham/wsm#readme",
+  "dependencies": {
+    "ws": "^1.1.1"
+  }
+}

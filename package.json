@@ -2,7 +2,7 @@
   "name": "wsm",
   "version": "1.0.0",
   "description": "A better way to handle WebSocket connection for both Client-side and Server-side.",
-  "main": "index.js",
+  "main": "wsm.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,6 +12,7 @@
   },
   "keywords": [
     "ws",
+    "wsm",
     "websocket",
     "manager",
     "server-side",

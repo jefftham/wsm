@@ -86,10 +86,10 @@ var WSM = require('wsm');
 var wsm = new WSM (null,{server:server});
 
 //you can use anything from original 'ws' websocket node module.
-wsm.ws
+wsm.wss
 
 //original send function from 'ws' websocket node module.
-wsm.ws.send('somthing');
+wsm.wss.send('somthing');
 
 ```
 
@@ -97,7 +97,7 @@ wsm.ws.send('somthing');
 
 ```html
 
-<script src="js/websocket_manager.js"></script>
+<script src="wsm.js"></script>
 <script>
     //reactive function for websocket manager, this will include all the handlers
     function reactive(wsm){

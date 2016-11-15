@@ -1,5 +1,6 @@
 # wsm: a node.js websocket library
 
+[![Build Status](https://travis-ci.org/jefftham/wsm.svg?branch=develop)](https://travis-ci.org/jefftham/wsm)
 
 `wsm` is a simple and useful solution for using WebSocket in both Node.js (server-side) and browser (client-side).
 

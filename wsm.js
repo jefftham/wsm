@@ -9,8 +9,7 @@
  * @module          WebsocketManager
  * @access          public
  * @param {function}  reconnect the websocket and add the handlers again.
- * @param {Object|boolean}  server: the configuration needed to setup the websocket connectin in nodejs. (should attach to the http/https server)
- *                                 - client: in client-side, true means https/wss connection, false mean http/ws connection
+ * @param {Object}  server: the configuration needed to setup the websocket connectin in nodejs. (should attach to the http/https server)
  * @example         
  *                 //on nodejs
  *                 var WSM = require('wsm')
@@ -41,7 +40,7 @@ WSM = function(argment1, argment2){
         args.forEach(function(elem){
             if(typeof elem === 'function'){
                 reactive = elem;
-            }else if(!options && elem != null && (typeof elem === 'object' || typeof elem === 'boolean' ) ){
+            }else if(!options && elem != null && typeof elem === 'object'   ){
                 options = elem;
             }
 
@@ -132,15 +131,13 @@ WSM = function(argment1, argment2){
          */
         function wsConnect(){
 
-            var options = options || false;
-
             var typeOfConnection;
 
-            if(options){
+            if (location.protocol === 'https:'){
                 typeOfConnection = 'wss';
-            }else{
+             }else{
                 typeOfConnection = 'ws'
-            }
+             }
 
             self.ws = new WebSocket(typeOfConnection+'://'+location.hostname);
  

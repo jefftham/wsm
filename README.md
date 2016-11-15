@@ -24,7 +24,14 @@ the send function will wrap/stringify as '{"type":"type","content":"message cont
 
 the addHandler() should be coded as 
 
-    `wsm.addHandler('type', function(message){ console.log(message.content); })`
+`wsm.addHandler('type', function(message){ console.log(message.content); })`
+
+`wsm` only take TWO type of arguments:-
+* object - (server-side) attached http/https server to WebSocket server. 
+    * Eg. `var wsm = new WSM ( {server:server} );`
+* function - (server-side/client-side) a callback function run when Websocket connected or reconnected. 
+    * Eg. `var wsm = new WSM ( function(wsm){wsm.addHandler('type',function(message){console.log(message.content);})} );`
+
 
 
 ### Installing
@@ -76,7 +83,7 @@ function reactive(wsm){
 }
 
 var WSM = require('wsm');
-var wsm = new WSM ({server:server} , reactive);  //position of the arguments is not matter.
+var wsm = new WSM ({server:server} , reactive);  //position of the arguments does not matter.
 ```
 
 ### Server Sending and receiving data
@@ -147,10 +154,7 @@ wsm.wss.send('somthing');
         );
     }
 
-    //if https server, wsm uses wss; else, wsm uses ws.
-    var https_connection = false;
-
-    var wsm = new WSM(  reactive , https_connection  );
+    var wsm = new WSM(  reactive  );
 
     //or simple as
     //var wsm = new WSM();

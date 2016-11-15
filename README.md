@@ -12,18 +12,18 @@
 ### Installing
 
 ```
-npm install --save wsm
+npm install wsm --save
 ```
 
 ### ExpressJS example
 
 ```js
-var server = require('http').createServer()
-  , url = require('url')
-  , WebSocketServer = require('ws').Server
-  , express = require('express')
-  , app = express()
-  , port = 4080;
+var http = require('http');
+var express = require('express');
+var app = express();
+var port = 8080;
+app.listen(port);
+var server = http.createServer(app);
 
 app.use(function (req, res) {
   res.send({ msg: "hello" });
@@ -55,11 +55,14 @@ var wsm = new WSM (null,{server:server});
 /*
  * @param {string}  type - any type that added through addHandler()
  * @param {*}       content - can be string,object,array, or anything.it will show as message.content on the other end.
- * @example         wsm.send('any','just say hello.')
+ * @example      wsm.send('any','just say hello.')
+ *              //the send function will wrap/stringify both 'type' & 'content'
+ *              // '{"type":"type1","content":"message content"}'
  */
-wsm.send('type1','message content')
+wsm.send('type1','message content');
 
-//add a handler to re-act different type of message. 
+
+//add a handler to respond the message sent from the other end.
 
 /*
  * @param {string}      type - the type that websocket manager care about.
@@ -109,6 +112,7 @@ wsm.wss.send('somthing');
         );
     }
 
+    //if https server, wsm uses wss; else, wsm uses ws.
     var https_connection = false;
 
     var wsm = new WSM(  reactive , https_connection  );

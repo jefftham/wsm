@@ -32,7 +32,11 @@
     "websocket extension",
     "websocket server",
     "websocket client",
-    "ws manager"
+    "ws manager",
+    "socket.io alternative",
+    "smart websocket",
+    "websocket handler",
+    "websocket listener"
   ],
   "author": "Jeff Tham <Jeff.Tham@email.com>",
   "license": "MIT",

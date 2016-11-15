@@ -21,9 +21,7 @@ var server = http.createServer(app);
 
 var WSM = require('../');
 
-var wsm = new WSM(
-    null
-    , {server:server});
+var wsm = new WSM( {server:server}  );
 
 //add a handler 
 wsm.addHandler('testing',function(message){return message.content});

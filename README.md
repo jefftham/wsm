@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/jefftham/wsm.svg?branch=develop)](https://travis-ci.org/jefftham/wsm)
 [![Join the chat at https://gitter.im/JeffTham/wsm](https://badges.gitter.im/JeffTham/wsm.svg)](https://gitter.im/JeffTham/wsm?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
+[![npm](https://img.shields.io/npm/l/express.svg)](https://github.com/jefftham/wsm)
 
 `wsm` is a simple and useful solution for using WebSocket in both Node.js (server-side) and browser (client-side).
 
@@ -12,13 +12,46 @@
 
 `wsm` takes the fastest websocket library - [ws](http://websockets.github.com/ws) as dependency and provides an easy method to handle connection and message between server and client instantly.
 
+### Important note:
+Only several functions in this library you should care about:-
+* wsm.wss - a reference to [`ws`](http://websockets.github.com/ws) instance.
+* wsm.addhandler('type', callback) - run the callback function when receive 'type' from the other end.
+* wsm.deleteHandler('type') - delete the added handler.
+* wsm.handlerList() - list all added handlers.
+* wsm.send('type',content) - send the content to the other end as 'type'.
+* 
+the send function will wrap/stringify as '{"type":"type","content":"message content"}'   
+
+the addHandler() should be code as 
+```js
+    wsm.addHandler('type', function(message){ console.log(message.content); })
+```
+
 ### Installing
 
 ```
 npm install wsm --save
 ```
 
-### ExpressJS example
+### ExpressJS example 1
+
+```js
+var http = require('http');
+var express = require('express');
+var app = express();
+var port = 8080;
+app.listen(port);
+var server = http.createServer(app);
+
+app.use(function (req, res) {
+  res.send({ msg: "hello" });
+});
+
+var WSM = require('wsm');
+var wsm = new WSM ( {server:server} );
+```
+
+### ExpressJS example 2 (run a callback function when WebSocket is connected or reconnected)
 
 ```js
 var http = require('http');
@@ -43,15 +76,14 @@ function reactive(wsm){
 }
 
 var WSM = require('wsm');
-var wsm = new WSM (reactive,{server:server});
+var wsm = new WSM ({server:server} , reactive);  //position of the arguments is not matter.
 ```
-
 
 ### Server Sending and receiving data
 
 ```js
 var WSM = require('wsm');
-var wsm = new WSM (null,{server:server});
+var wsm = new WSM ( {server:server} );
 
 //send a type of message to the other end. (from server to client or from client to server)
 
@@ -80,7 +112,7 @@ wsm.addHandler('type1',function(message){console.log(message.content)})
 
 ```js
 var WSM = require('wsm');
-var wsm = new WSM (null,{server:server});
+var wsm = new WSM ( {server:server} );
 
 wsm.broadcast('message type','message content');
 ```
@@ -89,7 +121,7 @@ wsm.broadcast('message type','message content');
 
 ```js
 var WSM = require('wsm');
-var wsm = new WSM (null,{server:server});
+var wsm = new WSM ( {server:server} );
 
 //you can use anything from original 'ws' websocket node module.
 wsm.wss
@@ -120,12 +152,13 @@ wsm.wss.send('somthing');
 
     var wsm = new WSM(  reactive , https_connection  );
 
+    //or simple as
+    //var wsm = new WSM();
+
 </script>
 
 
 ```
-
-
 
 
 

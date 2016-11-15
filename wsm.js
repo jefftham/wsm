@@ -8,8 +8,8 @@
  *                  handlers are registered in advance, they are objects. The type will be key, and function will be the value.
  * @module          WebsocketManager
  * @access          public
- * @param {function} reactive - reconnect the websocket and add the handlers again.
- * @param {Object|boolean} options - server: the configuration needed to setup the websocket connectin in nodejs. (should attach to the http/https server)
+ * @param {function}  reconnect the websocket and add the handlers again.
+ * @param {Object|boolean}  server: the configuration needed to setup the websocket connectin in nodejs. (should attach to the http/https server)
  *                                 - client: in client-side, true means https/wss connection, false mean http/ws connection
  * @example         
  *                 //on nodejs
@@ -24,9 +24,30 @@
  * @author          Jeff Tham <Jeff.Tham@email.com>
  */
 
-WSM = function(reactive, options){
+WSM = function(argment1, argment2){
 
     var self = this;
+
+    //allow dynamic position for arguments
+    var reactive = function(wsm){/*console.log('reactive function is not set.');*/};
+    var options;
+    var args = Array.prototype.slice.call(arguments); 
+    if(args.length === 0){
+        //do nothing to save time & processing power
+    }else if(args.length >2){
+        console.error('WSM only takes TWO arguments');
+    }else{
+        //assign arguments
+        args.forEach(function(elem){
+            if(typeof elem === 'function'){
+                reactive = elem;
+            }else if(!options && elem != null && (typeof elem === 'object' || typeof elem === 'boolean' ) ){
+                options = elem;
+            }
+
+        })
+
+    }
 
     //a key-value object, type as key, function/callback as value.
     var handlers = {};
@@ -43,6 +64,7 @@ WSM = function(reactive, options){
     //check the running environment
     if(isNode){
         //on nodejs
+            if(typeof options !== 'object'){console.error('WSM does not receive enough info to build. Either "{server:server}" or "{port:8080}" should pass as an argument.');}
 
             //load the websocket node module
             var ws = require('ws');

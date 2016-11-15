@@ -19,13 +19,13 @@ Only several functions in this library you should care about:-
 * wsm.deleteHandler('type') - delete the added handler.
 * wsm.handlerList() - list all added handlers.
 * wsm.send('type',content) - send the content to the other end as 'type'.
-* 
+
 the send function will wrap/stringify as '{"type":"type","content":"message content"}'   
 
-the addHandler() should be code as 
-```js
-    wsm.addHandler('type', function(message){ console.log(message.content); })
-```
+the addHandler() should be coded as 
+
+    `wsm.addHandler('type', function(message){ console.log(message.content); })`
+
 
 ### Installing
 

@@ -7,10 +7,10 @@
 ### Example for wsm server
 
 ## Steps:
-1) SSH to this directory and type `npm install`.
-2) type `npm start` or `node server.js` to start the server.
-3) open browser and visit (your webpage)[http://127.0.0.1:8080]. (the port is 8080)
-4) click "Ctrl" + "Shift" + "I" to open developer tools and view the result.
+1. SSH to this directory and type `npm install`.
+2. type `npm start` or `node server.js` to start the server.
+3. open browser and visit [your webpage](http://127.0.0.1:8080). (the port is 8080)
+4. click "Ctrl" + "Shift" + "I" to open developer tools and view the result.
 
 
 ## License

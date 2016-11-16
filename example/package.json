@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jefftham/wsm/example"
+    "url": "https://github.com/jefftham/wsm/tree/develop/example"
   },
   "keywords": [
     "ws",
@@ -41,7 +41,7 @@
   ],
   "author": "Jeff Tham <Jeff.Tham@email.com>",
   "license": "MIT",
-  "homepage": "https://github.com/jefftham/wsm/example#readme",
+  "homepage": "https://github.com/jefftham/wsm/tree/develop/example#readme",
   "dependencies": {
     "express": "^4.14.0",
     "wsm": "^1.0.4"

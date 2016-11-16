@@ -34,7 +34,7 @@ the addHandler() should be coded as
     * Eg. `var wsm = new WSM ( function(wsm){wsm.addHandler('type',function(message){console.log(message.content);})} );`
 
 ### Example
-Please refer to [here](https://github.com/jefftham/wsm/example#readme) for working example.
+Please refer to [here](https://github.com/jefftham/wsm/tree/develop/example#readme) for working example.
 
 
 ### Installing

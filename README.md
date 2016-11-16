@@ -58,7 +58,7 @@ app.use(function (req, res) {
 /*
     var publicFolder=  './www/';    
 
-    //makes the files in the publicFolder are visible to public. (js, img, css files should be placed inside of publicFolder)
+    //the files in the publicFolder are visible to public. (js, img, css files should be placed inside of publicFolder)
     app.use(express.static(publicFolder));
 */
 server.on('request', app);
@@ -84,7 +84,7 @@ app.use(function (req, res) {
 /*
     var publicFolder=  './www/';    
 
-    //makes the files in the publicFolder are visible to public. (js, img, css files should be placed inside of publicFolder)
+    //the files in the publicFolder are visible to public. (js, img, css files should be placed inside of publicFolder)
     app.use(express.static(publicFolder));
 */
 server.on('request', app);

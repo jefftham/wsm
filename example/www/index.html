@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>wsm.js testing</title>
+        <meta name="description" content="WebSocket Manager - A better way to handle WebSocket connection for both Client-side and Server-side" />
+
+
+        <!--[if lt IE 9]>
+        <script src="js/ie/html5shiv.js"></script>
+        <script src="js/ie/respond.min.js"></script>
+        <script src="js/ie/excanvas.js"></script>
+        <![endif]-->
+        
+
+        <!-- END IE SPECIFIC STYLES -->
+    </head>
+    <body>
+
+        <h1>Open Developer Tools by clicking "Ctrl" + "Shift" + "I" </h1>    
+
+        <!-- /Modals -->
+         <!-- retrieve from  https://developers.google.com/speed/libraries/    -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+        <!-- Load Libraries -->
+       
+        <script src="js/wsm.js"></script>
+        <script>
+            //reactive function for websocket manager, this will include all the handlers
+            function reactive(wsm){
+                wsm.addHandler(
+                    'test'
+                    ,function(message){
+                            console.log(message.content);
+                    }
+                );
+
+                wsm.send('test','a test message from browser.')
+            }
+
+            var wsm = new WSM(  reactive   );
+
+            //or simple as
+            //var wsm = new WSM();
+
+        </script>
+
+        
+    </body>
+</html>

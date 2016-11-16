@@ -1,0 +1,49 @@
+{
+  "name": "wsm_test_server",
+  "version": "1.0.0",
+  "description": "test server for wms.js",
+  "main": "server.js",
+  "directories": {},
+  "scripts": {
+    "start": "NODE_ENV='production' node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jefftham/wsm/tree/develop/example"
+  },
+  "keywords": [
+    "ws",
+    "wsm",
+    "websocket",
+    "manager",
+    "server-side",
+    "client-sede",
+    "websocket",
+    "manager",
+    "websocket",
+    "handler",
+    "HyBi",
+    "Push",
+    "RFC-6455",
+    "WebSocket",
+    "WebSockets",
+    "real-time",
+    "websocket manager",
+    "websocket management",
+    "websocket extension",
+    "websocket server",
+    "websocket client",
+    "ws manager",
+    "socket.io alternative",
+    "smart websocket",
+    "websocket handler",
+    "websocket listener"
+  ],
+  "author": "Jeff Tham <Jeff.Tham@email.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/jefftham/wsm/tree/develop/example#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "wsm": "^1.0.4"
+  }
+}

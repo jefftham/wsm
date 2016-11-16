@@ -36,6 +36,9 @@ the addHandler() should be coded as
 ### Example
 Please refer to [here](https://github.com/jefftham/wsm/tree/develop/example#readme) for working example.
 
+### CDN
+You can download this library at [jsdelivr](http://www.jsdelivr.com/projects/wsm).
+
 
 ### Installing
 

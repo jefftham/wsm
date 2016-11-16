@@ -19,7 +19,7 @@ var server = http.createServer(app);
     wsm.addHandler('testing',function(message){return message.content;});
  }*/
 
-var WSM = require('../');
+var WSM = require('../lib/wsm.js');
 
 var wsm = new WSM( {server:server}  );
 

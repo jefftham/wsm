@@ -2,7 +2,7 @@
   "name": "wsm",
   "version": "1.0.6",
   "description": "WebSocket Manager - A better way to handle WebSocket connection for both Client-side and Server-side.",
-  "main": "wsm.js",
+  "main": "lib/wsm.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha --reporter spec"
   },

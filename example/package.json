@@ -44,6 +44,6 @@
   "homepage": "https://github.com/jefftham/wsm/tree/develop/example#readme",
   "dependencies": {
     "express": "^4.14.0",
-    "wsm": "^1.0.4"
+    "wsm": "^1.0.5"
   }
 }

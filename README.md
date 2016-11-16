@@ -77,9 +77,10 @@ function reactive(wsm){
     wsm.addHandler(
         'test'
         ,function(message){
-                wsm.send('test','a test message from server.')
+                console.log(message.content);
         }
     );
+    wsm.send('test','a test message from server.');
 }
 
 var WSM = require('wsm');
@@ -149,9 +150,11 @@ wsm.wss.send('somthing');
         wsm.addHandler(
             'test'
             ,function(message){
-                    wsm.send('test','a test message from browser.')
+                    console.log(message.content);
             }
         );
+
+        wsm.send('test','a test message from browser.')
     }
 
     var wsm = new WSM(  reactive  );

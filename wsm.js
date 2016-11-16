@@ -68,11 +68,11 @@ WSM = function(argment1, argment2){
             //load the websocket node module
             var ws = require('ws');
 
-            this.wss =  new ws.Server(options);
+            self.wss =  new ws.Server(options);
 
-            if(this.wss){console.log('create a WebSocket server.');}
+            if(self.wss){console.log('create a WebSocket server.');}
 
-            this.wss.on('connection', function connection(ws) {
+            self.wss.on('connection', function connection(ws) {
 
                 console.log(ws._socket.remoteAddress +' connected through websocket at '+ new Date().toLocaleString('en-us',{timeZone:'America/New_York'})  );
 

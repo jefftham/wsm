@@ -2,7 +2,7 @@ var server = require('http').createServer();
 var url = require('url');
 var express = require('express');
 var app = express();
-var port = 80;
+var port = 8080;
 
 
 /*app.use(function (req, res) {

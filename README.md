@@ -12,9 +12,10 @@
 
 `wsm` takes the fastest websocket library - [ws](http://websockets.github.com/ws) as dependency and provides an easy method to handle connection and message between server and client instantly.
 
-### Important note:
+### Important note
 Only several functions in this library you should care about:-
-* wsm.wss - a reference to [`ws`](http://websockets.github.com/ws) instance.
+* wsm.ws - the opened websocket.
+* wsm.wss - the [`ws`](http://websockets.github.com/ws) server instance.
 * wsm.addhandler('type', callback) - run the callback function when receive 'type' from the other end.
 * wsm.deleteHandler('type') - delete the added handler.
 * wsm.handlerList() - list all added handlers.
@@ -32,6 +33,8 @@ the addHandler() should be coded as
 * function - (server-side/client-side) a callback function run when Websocket connected or reconnected. 
     * Eg. `var wsm = new WSM ( function(wsm){wsm.addHandler('type',function(message){console.log(message.content);})} );`
 
+### Example
+Please refer to [here](https://github.com/jefftham/wsm/example#readme) for working example.
 
 
 ### Installing
@@ -43,34 +46,49 @@ npm install wsm --save
 ### ExpressJS example 1
 
 ```js
-var http = require('http');
+var server = require('http').createServer();
+var url = require('url');
 var express = require('express');
 var app = express();
 var port = 8080;
-app.listen(port);
-var server = http.createServer(app);
 
 app.use(function (req, res) {
   res.send({ msg: "hello" });
 });
+/*
+    var publicFolder=  './www/';    
+
+    //makes the files in the publicFolder are visible to public. (js, img, css files should be placed inside of publicFolder)
+    app.use(express.static(publicFolder));
+*/
+server.on('request', app);
+server.listen(port, function () { console.log('Listening on ' + server.address().port) });
 
 var WSM = require('wsm');
 var wsm = new WSM ( {server:server} );
+
 ```
 
 ### ExpressJS example 2 (run a callback function when WebSocket is connected or reconnected)
 
 ```js
-var http = require('http');
+var server = require('http').createServer();
+var url = require('url');
 var express = require('express');
 var app = express();
 var port = 8080;
-app.listen(port);
-var server = http.createServer(app);
 
 app.use(function (req, res) {
   res.send({ msg: "hello" });
 });
+/*
+    var publicFolder=  './www/';    
+
+    //makes the files in the publicFolder are visible to public. (js, img, css files should be placed inside of publicFolder)
+    app.use(express.static(publicFolder));
+*/
+server.on('request', app);
+server.listen(port, function () { console.log('Listening on ' + server.address().port) });
 
 //reactive function for websocket manager, this will include all the handlers
 function reactive(wsm){
@@ -85,6 +103,7 @@ function reactive(wsm){
 
 var WSM = require('wsm');
 var wsm = new WSM ({server:server} , reactive);  //position of the arguments does not matter.
+
 ```
 
 ### Server Sending and receiving data

@@ -165,7 +165,7 @@ wsm.wss.send('somthing');
 
 ```html
 
-<script src="wsm.js"></script>
+<script src="https://cdn.jsdelivr.net/wsm/1.0.5/wsm.js"></script>
 <script>
     //reactive function for websocket manager, this will include all the handlers
     function reactive(wsm){

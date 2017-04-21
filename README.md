@@ -1,5 +1,7 @@
 # wsm: WebSocket Manager - a websocket library for node.js and client-side
 
+[![Join the chat at https://gitter.im/JeffTham/wsm](https://badges.gitter.im/JeffTham/wsm.svg)](https://gitter.im/JeffTham/wsm?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Build Status](https://travis-ci.org/jefftham/wsm.svg?branch=develop)](https://travis-ci.org/jefftham/wsm)
 [![Join the chat at https://gitter.im/JeffTham/wsm](https://badges.gitter.im/JeffTham/wsm.svg)](https://gitter.im/JeffTham/wsm?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![npm](https://img.shields.io/npm/l/express.svg)](https://github.com/jefftham/wsm)

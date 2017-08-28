@@ -26,6 +26,8 @@
     <script>
         //reactive function for websocket manager, this will include all the handlers
         function reactive(wsm) {
+
+            // what to do when browser receive 'test' event
             wsm.on(
                 'test',
                 function (data) {
@@ -33,6 +35,8 @@
                 }
             );
 
+            // send data to server and mark it as 'test' event
+            // so, server should be listening in 'test' event. (same as above)
             wsm.send('test', 'a test message from browser.')
         }
 

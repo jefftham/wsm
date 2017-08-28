@@ -17,7 +17,7 @@
 
 (The MIT License)
 
-Copyright (c) 2016 Jeff Tham &lt;Jeff.Tham@email.com&gt;
+Copyright (c) 2017 Jeff Tham &lt;Jeff.Tham@live.com&gt;
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

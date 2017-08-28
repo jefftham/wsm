@@ -16,22 +16,18 @@
 Only several functions in this library you should care about:-
 * wsm.ws - the opened websocket.
 * wsm.wss - the [`ws`](http://websockets.github.com/ws) server instance.
-* wsm.addhandler('type', callback) - run the callback function when receive 'type' from the other end.
-* wsm.deleteHandler('type') - delete the added handler.
+* wsm.on('type', callback) - run the callback function when receive 'type' from the other end.
+* wsm.del('type') - delete the added handler.
 * wsm.handlerList() - list all added handlers.
 * wsm.send('type',content) - send the content to the other end as 'type'.
 
-the send function will wrap/stringify as '{"type":"type","content":"message content"}'   
-
-the addHandler() should be coded as 
-
-`wsm.addHandler('type', function(message){ console.log(message.content); })`
+the send function will wrap/stringify as '{"type":"type","content":"message content"}'
 
 `wsm` only take TWO type of arguments:-
-* object - (server-side) attached http/https server to WebSocket server. 
+* object - (server-side) attached http/https server to WebSocket server.
     * Eg. `var wsm = new WSM ( {server:server} );`
-* function - (server-side/client-side) a callback function run when Websocket connected or reconnected. 
-    * Eg. `var wsm = new WSM ( function(wsm){wsm.addHandler('type',function(message){console.log(message.content);})} );`
+* function - (server-side/client-side) a callback function run when Websocket connected or reconnected.
+    * Eg. `var wsm = new WSM (   function(wsm){  wsm.on('type',function(content){  console.log(content)   })  }   );`
 
 ### Example
 Please refer to [here](https://github.com/jefftham/wsm/tree/develop/example#readme) for working example.
@@ -59,7 +55,7 @@ app.use(function (req, res) {
   res.send({ msg: "hello" });
 });
 /*
-    var publicFolder=  './www/';    
+    var publicFolder=  './www/';
 
     //the files in the publicFolder are visible to public. (js, img, css files should be placed inside of publicFolder)
     app.use(express.static(publicFolder));
@@ -85,7 +81,7 @@ app.use(function (req, res) {
   res.send({ msg: "hello" });
 });
 /*
-    var publicFolder=  './www/';    
+    var publicFolder=  './www/';
 
     //the files in the publicFolder are visible to public. (js, img, css files should be placed inside of publicFolder)
     app.use(express.static(publicFolder));
@@ -95,10 +91,10 @@ server.listen(port, function () { console.log('Listening on ' + server.address()
 
 //reactive function for websocket manager, this will include all the handlers
 function reactive(wsm){
-    wsm.addHandler(
+    wsm.on(
         'test'
-        ,function(message){
-                console.log(message.content);
+        ,function(content){
+                console.log(content);
         }
     );
     wsm.send('test','a test message from server.');
@@ -132,9 +128,9 @@ wsm.send('type1','message content');
 /*
  * @param {string}      type - the type that websocket manager care about.
  * @param {function}    cb - a callback function that run for the type, the parse message is the only parameter.
- * @example             wm.addHandler('welcome',function(message){console.log(message.content)})
+ * @example             wm.on('welcome',function(content){console.log(content)})
  */
-wsm.addHandler('type1',function(message){console.log(message.content)})
+wsm.on('type1',function(content){console.log(content)})
 ```
 
 
@@ -169,10 +165,10 @@ wsm.wss.send('somthing');
 <script>
     //reactive function for websocket manager, this will include all the handlers
     function reactive(wsm){
-        wsm.addHandler(
+        wsm.on(
             'test'
-            ,function(message){
-                    console.log(message.content);
+            ,function(content){
+                    console.log(content);
             }
         );
 
@@ -189,13 +185,24 @@ wsm.wss.send('somthing');
 
 ```
 
+### New way to add handler
+```js
+// new way
+// the message content is data
+wsm.on('type1',function(data){console.log(data)})
+```
 
+```js
+// old way (wsm version 2 break this change)
+// the message content is in message.content
+wsm.addHandler('type1',function(message){console.log(message.content)})
+```
 
 ## License
 
 (The MIT License)
 
-Copyright (c) 2016 Jeff Tham &lt;Jeff.Tham@email.com&gt;
+Copyright (c) 2017 Jeff Tham &lt;Jeff.Tham@live.com&gt;
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

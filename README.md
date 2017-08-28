@@ -42,33 +42,7 @@ You can download this library at [jsdelivr](http://www.jsdelivr.com/projects/wsm
 npm install wsm --save
 ```
 
-### ExpressJS example 1
-
-```js
-var server = require('http').createServer();
-var url = require('url');
-var express = require('express');
-var app = express();
-var port = 8080;
-
-app.use(function (req, res) {
-  res.send({ msg: "hello" });
-});
-/*
-    var publicFolder=  './www/';
-
-    //the files in the publicFolder are visible to public. (js, img, css files should be placed inside of publicFolder)
-    app.use(express.static(publicFolder));
-*/
-server.on('request', app);
-server.listen(port, function () { console.log('Listening on ' + server.address().port) });
-
-var WSM = require('wsm');
-var wsm = new WSM ( {server:server} );
-
-```
-
-### ExpressJS example 2 (run a callback function when WebSocket is connected or reconnected)
+### ExpressJS example (run a callback function when WebSocket is connected or reconnected)
 
 ```js
 var server = require('http').createServer();
